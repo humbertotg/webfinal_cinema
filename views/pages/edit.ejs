@@ -1,0 +1,49 @@
+<%- include('../header.ejs') %>
+  <body style="background-color:grey;">
+      <%- include('../navbar.ejs') %>
+      <div class="container2">
+        <table class="table table-image">
+          <form action="/update/<%= item._id%>" method="post">
+          <tbody>
+                <tr>
+                  <td class="w-25">
+                      <div class="column">
+                        <img src="<%= item.img_src %>" class="img-fluid img-thumbnail" alt="moveiePoster" width="200" height="300">
+                        <h5 style="margin-top: 10px;"><%= item.name %> (<%= item.year %>)</h5>
+                      </div>
+                  </td>
+                  <td class="align-middle">
+                    <select name="priority" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                      <%
+                      var options = ["High", "Medium", "Low" ];
+                      for ( var i = 0; i < options.length; i++ )
+                      {
+                          var selected = ( item.priority === options[i] ) ? "selected" : "";
+                          %><option value="<%=options[i] %>" <%=selected %>><%=options[i] %></option><%
+                      }
+                      %>
+                      </select>
+                  </td>
+                  <td class="align-middle">
+                    <select name="status" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                      <%
+                      var options = ["Completed", "Watching", "Not started" ];
+                      for ( var i = 0; i < options.length; i++ )
+                      {
+                          var selected = ( item.status === options[i] ) ? "selected" : "";
+                          %><option value="<%=options[i] %>" <%=selected %>><%=options[i] %></option><%
+                      }
+                      %>
+                    </select>
+                  </td>
+                </tr>
+          </tbody>
+        </table>
+        <button style="margin-bottom: 20px;" name="op" value="update" class="btn btn-primary">Update</button>
+        <button style="margin-bottom: 20px;" name="op" value="remove" class="btn btn-danger">Remove</button>
+      </form>
+      </div>
+    </body>
+    <script>
+    </script>
+</html>

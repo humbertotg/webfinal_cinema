@@ -1,0 +1,44 @@
+<%- include('../header.ejs') %>
+  <body style="background-color:grey;">
+      <%- include('../navbar.ejs') %>
+      <div class="container2">
+        <div class="search">
+            <form action="/search" method="post">
+                <input name="title" type="text" class="form-control" placeholder="Search for a movie"> 
+                <button class="btn btn-primary" type="submit">Search</button> 
+            </form>
+        </div>
+        <div class="results">
+            <table class="table table-image">
+            <tbody>
+              <% if (search){ %>
+                <% for (var i = 0; i < search.length && i < 4; i++) {%>
+                    <% if (search[i].Poster != 'N/A'){ %>
+                      <tr>
+                        <td class="w-25">  
+                            <div class="column">
+                            <img src="<%= search[i].Poster %>" class="img-fluid img-thumbnail" alt="moviePoster" width="200" height="300">
+                            <h5 style="margin-top: 10px;"><%= search[i].Title %> (<%= search[i].Year %>)</h5>
+                            </div>
+                        </td>
+                        <td class="align-middle">
+                            <a class="btn btn-primary" href="add/<%= search[i].imdbID%>">Add</a>
+                        </td>
+                      </tr>
+                  <% } %>
+                <% } %>
+              <% } else{ %>
+                <tr>
+                  <td>  
+                    <h4>No results</h4>
+                  </td>
+                </tr>
+              <% } %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </body>
+    <script>
+    </script>
+</html>

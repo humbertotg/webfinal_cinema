@@ -1,0 +1,57 @@
+<%- include('../header.ejs') %>
+  <body style="background-color:grey;">
+      <%- include('../navbar.ejs') %>
+      <div class="container2">
+        <h3>Welcome, <%= name %></h3>
+        <table class="table table-image">
+            <tbody>
+              <% if (items.length != 0) { %>
+                <% for (var i = 0; i < items.length; i++) {%>
+                  <tr>
+                    <td class="w-25">
+                        <div class="column">
+                        <img src="<%= items[i].img_src %>" class="img-fluid img-thumbnail" alt="moveiePoster" width="200" height="300">
+                        <h5 style="margin-top: 10px;"><%= items[i].name %> (<%= items[i].year %>)</h5>
+                        </div>
+                    </td>
+                    <td class="align-middle">
+                      <p class="item" style="background-color: mintcream;">
+                        <%= items[i].release %>
+                      </p>
+                    </td>
+                    <td class="align-middle">
+                      <p class="item" style="background-color: Wheat;">
+                        <%= items[i].runtime %>
+                      </p>
+                    </td>
+                    <td class="align-middle">
+                      <p class="item" style="<%- items[i].priority == 'High' ? 'background-color: Tomato' : items[i].priority == 'Medium' ? 'background-color: orange' : 'background-color: PeachPuff' %>">
+                        <%= items[i].priority %>
+                      </p>
+                    </td>
+                    <td class="align-middle">
+                      <p class="item" style="<%- items[i].status == 'Completed' ? 'background-color: LawnGreen' : items[i].status == 'Watching' ? 'background-color: PaleTurquoise' : 'background-color: DarkGrey' %>">
+                          <%= items[i].status %>
+                        </p>
+                    </td>
+                    <td class="align-middle">
+                      <p>
+                        <a class="btn btn-primary " href="edit/<%= items[i].imdbID%>"">Edit</a>
+                      </p>
+                    </td>
+                  </tr>
+                <% } %>
+              <% } else{ %>
+                <tr>
+                  <td>  
+                    <h4>No results</h4>
+                  </td>
+                </tr>
+              <% } %>
+            </tbody>
+          </table>
+      </div>
+  </body>
+  <script>
+  </script>
+</html>

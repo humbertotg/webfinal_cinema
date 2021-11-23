@@ -1,0 +1,20 @@
+<%- include ('../header.ejs') %>
+  <body style="background-color:grey;">
+    <div class="container fade-in">
+      <h4 style="margin-top: 20px;" class="title">- CinemaWorld -</h4>
+      <form action="/login" method="post">
+        <div class="login">
+          <img style="margin-bottom: 50px;" src="https://cdn-icons-png.flaticon.com/512/738/738096.png" height="100" width="100" />
+          <label for="user">Username</label>
+          <input type="username" placeholder="username" name="username">
+
+          <label for="pass">Password</label>
+          <input type="password" placeholder="password" name="password">
+        </div>
+        <div class="input">
+          <button class="btn btn-primary btn-lg" style="color: white;" name="op" value="login">Login</button>
+          <button class="btn btn-primary btn-lg" style="color: white;" name="op" value="register">Register</button>
+        </div>
+      </form>
+    </div>
+<%- include('../footer.ejs') %>

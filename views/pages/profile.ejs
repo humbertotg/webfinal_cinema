@@ -1,0 +1,17 @@
+<%- include('../header.ejs') %>
+  <body style="background-color:grey;">
+      <%- include('../navbar.ejs') %>
+      <div class="container2">
+        <div class="mb-4 p-3 d-flex justify-content-center">
+          <div class="card p-4">
+              <div class=" image d-flex flex-column justify-content-center align-items-center"> <img src="https://cdn-icons-png.flaticon.com/512/738/738096.png" height="100" width="100" /> <span class="name mt-3"><%= user.name %></span> <span class="idd"><%= user.username %></span>
+                  <div class="d-flex flex-row justify-content-center align-items-center mt-3"> <span class="number"><%= stats.total %> Movies in your watchlist</span> </div>
+                  <div class="text mt-3"> <br>Completed : <%= stats.completed%> </br> Watching : <%= stats.watching%> <br> Not started : <%= stats.nstarted%> </br> <br> </br> </div>
+              </div>
+          </div>
+      </div>
+      </div>
+    </body>
+    <script>
+    </script>
+</html> 

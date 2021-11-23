@@ -1,0 +1,52 @@
+<%- include('../header.ejs') %>
+  <body style="background-color:grey;">
+    <div class="container fade-in">
+      <h4 class="title">- CinemaWorld -</h4>
+      <form action="/register" method="post">
+        <div class="login">
+          <label for="name">Name</label>
+          <input type="text" placeholder="John Smith" name="name">
+
+          <label for="email">Email</label>
+          <input type="email" placeholder="jsmith@gmail.com" name="email">
+
+          <label for="user">Username</label>
+          <input type="text" placeholder="username" name="username">
+
+          <label for="password">Password</label>
+          <input type="password" placeholder="password" name="password" id="password">
+
+          <label for="password">Repeat Password</label>
+          <input type="password" placeholder="password" name="repeatpassword" id="repeatpassword">
+          <p id="passprompt" style="color:red;">Repeated password must be the same as password!</p>
+        </div>
+        <input type="checkbox" id="check"/>
+        <label for="checkbox">Show password</label>
+        <div class="input">
+          <button class="btn btn-primary btn-lg" style="color: white;" name="op" value="login">Go Back</button>
+          <button class="btn btn-primary btn-lg" style="color: white;" name="op" value="register">Register</button>
+        </div>
+    </form>
+    </div>
+  </body>
+  <script>
+    $('#check').click(function(){
+        if(document.getElementById('check').checked) {
+            $('#password').get(0).type = "text";
+            $('#repeatpassword').get(0).type = "text";
+        } else {
+            $('#password').get(0).type = "password";
+            $('#repeatpassword').get(0).type = "password";
+        }
+    });
+
+    $("#password, #repeatpassword").keyup(function() {
+        console.log()
+        if($("#repeatpassword").val() != $("#password").val()){
+            $("#passprompt").css({"visibility" : "visible"})
+        } else{
+            $("#passprompt").css({"visibility" : "hidden"})
+        }
+    });
+</script>
+</html>

@@ -1,0 +1,39 @@
+<%- include('../header.ejs') %>
+  <body style="background-color:grey;">
+      <%- include('../navbar.ejs') %>
+      <div class="container2">
+        <div class="search">
+            <form action="/share/search" method="post">
+                <input name="usersearch" type="text" class="form-control" placeholder="Enter a friends username"> 
+                <button class="btn btn-primary" type="submit">Search</button> 
+            </form>
+        </div>
+        <div class="results">
+            <table class="table table-image" cellpadding="0" cellspacing="0">
+            <tbody>
+              <% if (search.length > 0){ %>
+                <% for (var i = 0; i < search.length && i < 4; i++) {%>
+                <tr>
+                  <td class="w-25">  
+                      <div class="column">
+                      <img src="<%= search[i].img_src %>" class="img-fluid img-thumbnail" alt="moviePoster" width="200" height="300">
+                      <h5 style="margin-top: 10px;"><%= search[i].name %> (<%= search[i].year %>)</h5>
+                      </div>
+                  </td>
+                </tr>
+                <% } %>
+              <% } else{ %>
+                <tr>
+                  <td>  
+                    <h4>No results</h4>
+                  </td>
+                </tr>
+              <% } %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </body>
+    <script>
+    </script>
+</html>
