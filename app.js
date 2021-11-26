@@ -1,20 +1,21 @@
 var express = require("express");
 var path = require("path");
+var env = require('dotenv').config();
 var cookieParser = require("cookie-parser");
 var sessions = require('express-session');
 var mongoose = require('mongoose');
 var bcrypt = require('bcryptjs')
 var path = require('path')
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
-var apiKey = "9baf581d"
-var example = "https://www.omdbapi.com/?apikey=9baf581d&"
+var example = "https://www.omdbapi.com/?apikey=" + process.env.APIKEY + "&"
 
 
 var app = express();
 var PORT = process.env.PORT || 3000;
 var session
 
-mongoose.connect('mongodb+srv://admin:ctfuzoqo@cluster0.abkwc.mongodb.net/Cluster0?retryWrites=true&w=majority');
+
+mongoose.connect(process.env.DATABASE_URL || 'mongodb://localhost:27017/crud-mongo');
 var User = require("./models/user")
 var Item = require("./models/item");
 const { nextTick } = require("process");
